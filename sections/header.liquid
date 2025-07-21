@@ -4,7 +4,6 @@
     align-items: center;
     justify-content: center;
     background: #fff;
-    border-bottom: 1px solid #000;
   }
   .header-wrapper > * {
     flex: 1;
@@ -282,6 +281,7 @@
   </div>
 </div>
 <div style="width:100%;border-bottom:2px solid #000;margin:0;padding:0;"></div>
+{% unless template contains 'page.contact' or template contains 'page.policy' or request.page_type == 'policy' or request.page_type == 'contact' %}
 <div class="multi-banner">
   <div class="announcement-bar">
     <div class="marquee">
@@ -299,6 +299,7 @@
   </div>
   {% endif %}
 </div>
+{% endunless %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var burgerMenu = document.querySelector('.burger-menu');
