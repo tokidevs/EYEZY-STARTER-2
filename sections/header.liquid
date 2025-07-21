@@ -220,89 +220,75 @@
   }
 </style>
 <div class="page-width">
+  <div class="header-wrapper">
+    <div class="burger-menu">
+      {%- if section.settings.menu != blank -%}
+      <svg xmlns="http://www.w3.org/2000/svg" class="burger" width="45" height="41" viewBox="0 0 55 51" fill="none">
+        <line x1="8" y1="20" x2="48" y2="20" stroke="{{ settings.header-menu }}" stroke-width="2"/>
+        <line x1="8" y1="28.6133" x2="48" y2="28.6133" stroke="{{ settings.header-menu }}" stroke-width="2"/>
+      </svg>
+      <svg class="cross" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="45" height="41" viewBox="0 0 45 41" fill="none">
+        <path d="M13 30.4902L31.4902 12" stroke="{{ settings.header-menu-mobile }}" stroke-width="1.65"/>
+        <path d="M13 12L31.4902 30.4902" stroke="{{ settings.header-menu-mobile }}" stroke-width="1.65"/>
+      </svg>
+      {% endif %}
+    </div>
+    <div class="header-menu">
+      {% if section.settings.menu %}
+        {% for link in linklists[section.settings.menu].links %}
+        <div class="menu-item{% if link.links.size > 0 %} has-children{% endif %}">
+          <a href="{{ link.url }}" class="menu-link">{{ link.title }}</a>
+          {% if link.links.size > 0 %}
+            <div class="submenu">
+              {% for childlink in link.links %}
+                <a href="{{ childlink.url }}">{{ childlink.title }}</a>
+                {% if childlink.links.size > 0 %}
+                  {% for subchildlink in childlink.links %}
+                    <span>
+                      <a class="subsub-menu-item" href="{{ subchildlink.url }}">{{ subchildlink.title }}</a>
+                    </span>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      {% if shop.customer_accounts_enabled %}
+      <div class="menu-item">
+      <a class="account-mobile menu-link" href="/account">Account</a>
+      </div>
+      {% endif %}
+      {% endif %}
+    </div>
+    <div class="logo-wrapper">
+      <a href="{{ routes.root_url }}" class="header__heading-link">
+        {%- if section.settings.logo != blank -%}
+          <img class="header-logo" src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ shop.name }}" loading="eager">
+        {%- else -%}
+          <span class="header-logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+    <div class="right-nav">
+      {% if shop.customer_accounts_enabled %}
+      <a class="account" href="/account">Account</a>
+      {% endif %}
+      <a href="/cart">Cart (<span id="CartCount">{{ cart.item_count }}</span>)</a>
+    </div>
+  </div>
+</div>
 <div class="multi-banner">
   <div class="announcement-bar">
     <div class="marquee">
       <span>FREE SHIPPING ON ALL ORDERS — NEW COLLECTION OUT NOW — SHOP THE LATEST DROPS</span>
     </div>
   </div>
-  <div class="category-bar">
-    <a href="/collections/mens">MENS</a>
-    <a href="/collections/womens">WOMENS</a>
-    <a href="/collections/bags">BAGS</a>
-    <a href="/collections/shoes">SHOES</a>
-    <a href="/collections/accessories">ACCESSORIES</a>
-    <a href="/collections/sale">SALE</a>
-  </div>
   {% if template contains 'product' %}
   <div class="breadcrumb-bar">
     <span><a href="/collections/mens">MENS</a> / <a href="/collections/shirts">SHIRTS</a> / BLACK</span>
   </div>
   {% endif %}
-</div>
-<div class="header-wrapper">
-<div class="burger-menu">
-{%- if section.settings.menu != blank -%}
-<svg xmlns="http://www.w3.org/2000/svg" class="burger" width="45" height="41" viewBox="0 0 55 51" fill="none">
-<line x1="8" y1="20" x2="48" y2="20" stroke="{{ settings.header-menu }}" stroke-width="2"/>
-<line x1="8" y1="28.6133" x2="48" y2="28.6133" stroke="{{ settings.header-menu }}" stroke-width="2"/>
-</svg>
-
-<svg class="cross" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="45" height="41" viewBox="0 0 45 41" fill="none">
-<path d="M13 30.4902L31.4902 12" stroke="{{ settings.header-menu-mobile }}" stroke-width="1.65"/>
-<path d="M13 12L31.4902 30.4902" stroke="{{ settings.header-menu-mobile }}" stroke-width="1.65"/>
-</svg>
-{% endif %}
-</div>
-
-  <div class="header-menu">
-    {% if section.settings.menu %}
-      {% for link in linklists[section.settings.menu].links %}
-      <div class="menu-item{% if link.links.size > 0 %} has-children{% endif %}">
-        <a href="{{ link.url }}" class="menu-link">{{ link.title }}</a>
-        {% if link.links.size > 0 %}
-          <div class="submenu">
-            {% for childlink in link.links %}
-              <a href="{{ childlink.url }}">{{ childlink.title }}</a>
-              {% if childlink.links.size > 0 %}
-                
-                  {% for subchildlink in childlink.links %}
-                    <span>
-                      
-                      <a class="subsub-menu-item" href="{{ subchildlink.url }}">{{ subchildlink.title }}</a>
-                    </span>
-                    
-                  {% endfor %}
-                
-              {% endif %}
-            {% endfor %}
-          </div>
-        {% endif %}
-      </div>
-      {% endfor %}
-    {% if shop.customer_accounts_enabled %}
-    <div class="menu-item">
-    <a class="account-mobile menu-link" href="/account">Account</a>
-    </div>
-    {% endif %}
-    {% endif %}
-  </div>
-  <div class="logo-wrapper">
-    <a href="{{ routes.root_url }}" class="header__heading-link">
-      {%- if section.settings.logo != blank -%}
-        <img class="header-logo" src="{{ section.settings.logo | img_url: 'master' }}" alt="{{ shop.name }}" loading="eager">
-      {%- else -%}
-        <span class="header-logo-text">{{ shop.name }}</span>
-      {%- endif -%}
-    </a>
-  </div>
-<div class="right-nav">
-    {% if shop.customer_accounts_enabled %}
-    <a class="account" href="/account">Account</a>
-    {% endif %}
-    <a href="/cart">Cart (<span id="CartCount">{{ cart.item_count }}</span>)</a>
-</div>
-</div>
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
