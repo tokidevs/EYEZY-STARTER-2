@@ -88,7 +88,7 @@
 .announcement-bar {
   width: 100%;
   background: #f5f5f5;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 2px solid #000;
   font-size: 14px;
   color: #222;
   overflow: hidden;
@@ -135,7 +135,8 @@
 .breadcrumb-bar {
   width: 100%;
   background: #f9f9f9;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 2px solid #000;
+  border-top: 2px solid #000;
   font-size: 13px;
   color: #444;
   padding: 0.4rem 0;
@@ -284,9 +285,14 @@
       <span>FREE SHIPPING ON ALL ORDERS — NEW COLLECTION OUT NOW — SHOP THE LATEST DROPS</span>
     </div>
   </div>
-  {% if template contains 'product' %}
+  {% if template contains 'product' and product %}
   <div class="breadcrumb-bar">
-    <span><a href="/collections/mens">MENS</a> / <a href="/collections/shirts">SHIRTS</a> / BLACK</span>
+    <span>
+      {% if product.collections.size > 0 %}
+        <a href="{{ product.collections.first.url }}">{{ product.collections.first.title }}</a> /
+      {% endif %}
+      {{ product.title }}
+    </span>
   </div>
   {% endif %}
 </div>
