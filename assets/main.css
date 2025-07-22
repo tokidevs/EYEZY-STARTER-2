@@ -1467,3 +1467,15 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 140% !important;
   letter-spacing: 0px !important;
 }
+
+/* Unified input field for password page */
+#unifiedInput {
+  background: transparent;
+  border: 2px solid #000;
+  transition: border-width 0.2s;
+  box-shadow: none;
+}
+#unifiedInput:focus {
+  border-width: 4px;
+  outline: none;
+}
