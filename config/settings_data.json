@@ -25,6 +25,7 @@
     "enable_infinity_scroll": true,
     "body-background": "color",
     "body-background-color": "#ffffff",
+    "body-background-image": "shopify://shop_images/ezgif-4ec4b307e1c93b.gif",
     "headings-color": "#000000",
     "body-color": "#000000",
     "header-menu": "#000000",
@@ -42,14 +43,14 @@
     "product_desc_size_mobile": 13,
     "product_desc_line_height_mobile": 1.6,
     "eyecey-copy": true,
+    "checkout_accent_color": "#000000",
+    "checkout_button_color": "#000000",
     "enable-preloader": false,
     "pageloader-logo": "shopify://shop_images/EYECEY_logo2_1.png",
     "pageloader-logo-size": 230,
     "pageloader-logo-size-mobile": 120,
     "enable-header-overlay": false,
     "header-overlay-logo": "shopify://shop_images/Mask_group.png",
-    "checkout_accent_color": "#000000",
-    "checkout_button_color": "#000000",
     "sections": {
       "featured-collection": {
         "type": "featured-collection",
@@ -61,7 +62,6 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify://shop_images/optimized-pin-sort.gif",
           "logo-size": 60,
           "logo-size-mobile": 100,
           "menu": "main-menu"
@@ -83,18 +83,6 @@
         }
       }
     },
-    "content_for_index": [],
-    "blocks": {
-      "14060646107696862457": {
-        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-        "disabled": false,
-        "settings": {}
-      },
-      "11254466806377166470": {
-        "type": "shopify://apps/bf-size-charts/blocks/embed-block/47ee4f2e-eb5e-41af-9beb-e2786646bf2a",
-        "disabled": true,
-        "settings": {}
-      }
-    }
+    "content_for_index": []
   }
 }
