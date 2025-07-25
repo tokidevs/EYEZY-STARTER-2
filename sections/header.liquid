@@ -336,7 +336,7 @@
 <div class="multi-banner">
   <div class="announcement-bar" style="border-bottom:none;">
     <div class="marquee">
-      <span>FREE SHIPPING ON ALL ORDERS — NEW COLLECTION OUT NOW — SHOP THE LATEST DROPS</span>
+      <span>{{ section.settings.announcement_text }}</span>
     </div>
   </div>
   <div style="width:100%;border-bottom:1px solid #000;margin:0;padding:0;"></div>
@@ -442,6 +442,12 @@ document.addEventListener('DOMContentLoaded', function() {
       "type": "link_list",
       "id": "menu",
       "label": "Header menu"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement Text",
+      "default": "FREE SHIPPING ON ALL ORDERS — NEW COLLECTION OUT NOW — SHOP THE LATEST DROPS"
     }
   ]
 }
