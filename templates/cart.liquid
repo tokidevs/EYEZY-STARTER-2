@@ -96,7 +96,7 @@ button.cart__quantity-btn svg {
                  data-quantity="{{ item.quantity }}" 
                  data-inventory="{{ item.variant.inventory_quantity }}" 
                  data-track-quantity="{% if item.variant.inventory_management %}true{% else %}false{% endif %}" 
-                 data-allow-oversell="{{ item.variant.inventory_policy == 'continue' }}">
+                 data-allow-oversell="{{ item.variant.inventory_policy }}">
               <button class="cart__quantity-btn cart__quantity-btn-minus" type="button">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                   <path d="M21 12C21 12.1989 20.921 12.3897 20.7803 12.5303C20.6397 12.671 20.4489 12.75 20.25 12.75H3.75C3.55109 12.75 3.36032 12.671 3.21967 12.5303C3.07902 12.3897 3 12.1989 3 12C3 11.8011 3.07902 11.6103 3.21967 11.4697C3.36032 11.329 3.55109 11.25 3.75 11.25H20.25C20.4489 11.25 20.6397 11.329 20.7803 11.4697C20.921 11.6103 21 11.8011 21 12Z" fill="{{ settings.headings-color }}"/>
@@ -231,3 +231,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </script>
 
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{{ item.variant.inventory_policy == 'continue' }}"
+  to: "{{ item.variant.inventory_policy }}"
+  position: 2704..2739
+{% endcomment %}
